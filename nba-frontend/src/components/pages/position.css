@@ -1,0 +1,46 @@
+.position-title{
+    color: #fff;
+    
+  }
+  .position-top{
+    position: absolute;
+    font-size: medium;
+    text-align: center;
+    top: 10%;
+    width: 30%;
+    align-items: center;
+  }
+  
+  .position-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 60vh;
+    width: 100%;
+  }
+
+  .position-description {
+    color: #fff;
+    font-size: large;
+  }
+  
+  .position-card {
+    width: 20%; /* Each item takes up 25% of the container width */
+    padding: 10px;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 0px 0px 2px 0px;
+    border-color: white;
+    border-radius: 0.3rem;
+  }
+  
+  
+  .position-card:hover {
+    background-color: #002b4e;
+  }
+  
+  .position-card img {
+    max-width: 100%;
+    height: auto;
+  }

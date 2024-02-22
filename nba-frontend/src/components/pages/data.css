@@ -1,0 +1,23 @@
+.data-title{
+    color: #fff;
+    
+}
+.data-top{
+    position: absolute;
+    display: flex;
+    text-align: center;
+    font-size: medium;
+    top: 10%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.datagrid {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 60vh;
+
+}

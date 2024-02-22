@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 import lombok.Getter;
@@ -20,16 +19,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "player_statistic")
 public class Player {
-    @SequenceGenerator(
-        name = "player_sequence",
-        sequenceName = "player_sequence",
-        allocationSize = 1
-    )
-    @GeneratedValue(
-        strategy = GenerationType.SEQUENCE,
-        generator = "player_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    private String id;
     private String player_name;
     private String position;
     private Integer age;
@@ -58,6 +50,6 @@ public class Player {
     private Double blocks;
     private Double personal_fouls;
     private Double points;
+    private Double turnovers;
     private Integer year;
-    
 }

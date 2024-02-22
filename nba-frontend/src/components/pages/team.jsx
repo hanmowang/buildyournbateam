@@ -1,50 +1,87 @@
-import React from 'react';
-
-// Define an array of NBA teams with their logos and names
-const nbaTeams = [
-    { name: 'Atlanta Hawks', logo: 'https://upload.wikimedia.org/wikipedia/en/2/24/Atlanta_Hawks_logo.svg' },
-    { name: 'Boston Celtics', logo: 'https://upload.wikimedia.org/wikipedia/en/8/8f/Boston_Celtics.svg' },
-    { name: 'Brooklyn Nets', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Brooklyn_Nets_newlogo.svg' },
-    { name: 'Charlotte Hornets', logo: 'https://upload.wikimedia.org/wikipedia/en/c/c4/Charlotte_Hornets_%282014%29.svg' },
-    { name: 'Chicago Bulls', logo: 'https://upload.wikimedia.org/wikipedia/en/6/67/Chicago_Bulls_logo.svg' },
-    { name: 'Cleveland Cavaliers', logo: 'https://upload.wikimedia.org/wikipedia/en/4/4b/Cleveland_Cavaliers_logo.svg' },
-    { name: 'Dallas Mavericks', logo: 'https://upload.wikimedia.org/wikipedia/en/9/97/Dallas_Mavericks_logo.svg' },
-    { name: 'Denver Nuggets', logo: 'https://upload.wikimedia.org/wikipedia/en/7/76/Denver_Nuggets.svg' },
-    { name: 'Detroit Pistons', logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Pistons_logo17.svg' },
-    { name: 'Golden State Warriors', logo: 'https://upload.wikimedia.org/wikipedia/en/0/01/Golden_State_Warriors_logo.svg' },
-    { name: 'Houston Rockets', logo: 'https://upload.wikimedia.org/wikipedia/en/2/28/Houston_Rockets.svg' },
-    { name: 'Indiana Pacers', logo: 'https://upload.wikimedia.org/wikipedia/en/1/1b/Indiana_Pacers.svg' },
-    { name: 'Los Angeles Clippers', logo: 'https://upload.wikimedia.org/wikipedia/en/b/bb/Los_Angeles_Clippers_logo.svg' },
-    { name: 'Los Angeles Lakers', logo: 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Los_Angeles_Lakers_logo.svg' },
-    { name: 'Memphis Grizzlies', logo: 'https://upload.wikimedia.org/wikipedia/en/f/f1/Memphis_Grizzlies.svg' },
-    { name: 'Miami Heat', logo: 'https://upload.wikimedia.org/wikipedia/en/f/fb/Miami_Heat_logo.svg' },
-    { name: 'Milwaukee Bucks', logo: 'https://upload.wikimedia.org/wikipedia/en/4/4a/Milwaukee_Bucks_logo.svg' },
-    { name: 'Minnesota Timberwolves', logo: 'https://upload.wikimedia.org/wikipedia/en/c/c2/Minnesota_Timberwolves_logo.svg' },
-    { name: 'New Orleans Pelicans', logo: 'https://upload.wikimedia.org/wikipedia/en/0/0d/New_Orleans_Pelicans_logo.svg' },
-    { name: 'New York Knicks', logo: 'https://upload.wikimedia.org/wikipedia/en/2/25/New_York_Knicks_logo.svg' },
-    { name: 'Oklahoma City Thunder', logo: 'https://upload.wikimedia.org/wikipedia/en/5/5d/Oklahoma_City_Thunder.svg' },
-    { name: 'Orlando Magic', logo: 'https://upload.wikimedia.org/wikipedia/en/1/10/Orlando_Magic_logo.svg' },
-    { name: 'Philadelphia 76ers', logo: 'https://upload.wikimedia.org/wikipedia/en/0/0e/Philadelphia_76ers_logo.svg' },
-    { name: 'Phoenix Suns', logo: 'https://upload.wikimedia.org/wikipedia/en/d/dc/Phoenix_Suns_logo.svg' },
-    { name: 'Portland Trail Blazers', logo: 'https://upload.wikimedia.org/wikipedia/en/2/21/Portland_Trail_Blazers_logo.svg' },
-    { name: 'Sacramento Kings', logo: 'https://upload.wikimedia.org/wikipedia/en/c/c7/SacramentoKings.svg' },
-    { name: 'San Antonio Spurs', logo: 'https://upload.wikimedia.org/wikipedia/en/a/a2/San_Antonio_Spurs.svg' },
-    { name: 'Toronto Raptors', logo: 'https://upload.wikimedia.org/wikipedia/en/3/36/Toronto_Raptors_logo.svg' },
-    { name: 'Utah Jazz', logo: 'https://upload.wikimedia.org/wikipedia/en/0/04/Utah_Jazz_logo_%282016%29.svg' },
-    { name: 'Washington Wizards', logo: 'https://upload.wikimedia.org/wikipedia/en/0/02/Washington_Wizards_logo.svg' }
+import React, {useState} from 'react';
+import sixer_logo from '../../assets/teams_image/76ers.png'
+import bucks_logo from '../../assets/teams_image/bucks.png'
+import bulls_logo from '../../assets/teams_image/bulls.png'
+import cavs_logo from '../../assets/teams_image/cavs.png'
+import celtics_logo from '../../assets/teams_image/celtics.png'
+import clippers_logo from '../../assets/teams_image/clippers.png'
+import grizzlies_logo from '../../assets/teams_image/grizzlies.png'
+import hawks_logo from '../../assets/teams_image/hawks.png'
+import heat_logo from '../../assets/teams_image/heat.png'
+import hornets_logo from '../../assets/teams_image/hornets.png'
+import jazz_logo from '../../assets/teams_image/jazz.png'
+import kings_logo from '../../assets/teams_image/kings.png'
+import knicks_logo from '../../assets/teams_image/knicks.png'
+import lakers_logo from '../../assets/teams_image/lakers.png'
+import magic_logo from '../../assets/teams_image/magic.png'
+import mavericks_logo from '../../assets/teams_image/mavs.png'
+import nets_logo from '../../assets/teams_image/nets.png'
+import nuggets_logo from '../../assets/teams_image/nuggets.png'
+import pacers_logo from '../../assets/teams_image/pacers.png'
+import pelicans_logo from '../../assets/teams_image/pelicans.png'
+import pistons_logo from '../../assets/teams_image/pistons.png'
+import raptors_logo from '../../assets/teams_image/raptors.png'
+import rockets_logo from '../../assets/teams_image/rockets.png'
+import spurs_logo from '../../assets/teams_image/spurs.png'
+import suns_logo from '../../assets/teams_image/suns.png'
+import thunder_logo from '../../assets/teams_image/thunder.png'
+import timberwolves_logo from '../../assets/teams_image/wolves.png'
+import warriors_logo from '../../assets/teams_image/warriors.png'
+import wizards_logo from '../../assets/teams_image/wizards.png'
+import TextField from '@mui/material/TextField';
+import './team.css'
+import TeamCard from '../teamCard';
+const teams = [
+  { name: 'DEN', full_name: 'Denver Nuggets', img: nuggets_logo },
+  { name: 'IND', full_name: 'Indiana Pacers', img: pacers_logo },
+  { name: 'HOU', full_name: 'Houston Rockets', img: rockets_logo },
+  { name: 'CHI', full_name: 'Chicago Bulls', img: bulls_logo },
+  { name: 'PHI', full_name: 'Philadelphia 76ers', img: sixer_logo },
+  { name: 'MIL', full_name: 'Milwaukee Bucks', img: bucks_logo },
+  { name: 'CLE', full_name: 'Cleveland Cavaliers', img: cavs_logo },
+  { name: 'BOS', full_name: 'Boston Celtics', img: celtics_logo },
+  { name: 'LAC', full_name: 'LA Clippers', img: clippers_logo },
+  { name: 'MEM', full_name: 'Memphis Grizzlies', img: grizzlies_logo },
+  { name: 'ATL', full_name: 'Atlanta Hawks', img: hawks_logo },
+  { name: 'MIA', full_name: 'Miami Heat', img: heat_logo },
+  { name: 'CHA', full_name: 'Charlotte Hornets', img: hornets_logo },
+  { name: 'UTA', full_name: 'Utah Jazz', img: jazz_logo },
+  { name: 'SAC', full_name: 'Sacramento Kings', img: kings_logo },
+  { name: 'NYK', full_name: 'New York Knicks', img: knicks_logo },
+  { name: 'LAL', full_name: 'Los Angeles Lakers', img: lakers_logo },
+  { name: 'ORL', full_name: 'Orlando Magic', img: magic_logo },
+  { name: 'DAL', full_name: 'Dallas Mavericks', img: mavericks_logo },
+  { name: 'BKN', full_name: 'Brooklyn Nets', img: nets_logo },
+  { name: 'NOP', full_name: 'New Orleans Pelicans', img: pelicans_logo },
+  { name: 'DET', full_name: 'Detroit Pistons', img: pistons_logo },
+  { name: 'TOR', full_name: 'Toronto Raptors', img: raptors_logo },
+  { name: 'SAS', full_name: 'San Antonio Spurs', img: spurs_logo },
+  { name: 'PHX', full_name: 'Phoenix Suns', img: suns_logo },
+  { name: 'OKC', full_name: 'Oklahoma City Thunder', img: thunder_logo },
+  { name: 'MIN', full_name: 'Minnesota Timberwolves', img: timberwolves_logo },
+  { name: 'GSW', full_name: 'Golden State Warriors', img: warriors_logo },
+  { name: 'WAS', full_name: 'Washington Wizards', img: wizards_logo }
 ];
-
 function Team() {
+  const [searchWord, setSearchWord] = useState('')
+  const handleInput = (e) => {
+    setSearchWord(e.target.value)
+  }
   return (
     <div className="team">
-      <h1>NBA Teams</h1>
-      <div className="team-logos">
-        {nbaTeams.map((team, index) => (
-          <div key={index} className="team-logo">
-            <img src={team.logo} alt={team.name} />
-            <p>{team.name}</p>
-          </div>
-        ))}
+      <div className='team-top'>
+        <h1 className='team-title'>NBA Teams</h1>
+        <TextField className="team-search" label="Search" variant="filled" onInput={handleInput}/>
+      </div>
+      <div className="team-container">
+        {teams.map((team, key) => {
+          if (team.full_name.toLocaleLowerCase().includes(searchWord.toLocaleLowerCase()) || searchWord === '') {
+            return (
+              <TeamCard key={key} team_name={team.name} team_img={team.img} team_full_name={team.full_name}/>
+            )
+          }
+        }
+        )}
       </div>
     </div>
   );
