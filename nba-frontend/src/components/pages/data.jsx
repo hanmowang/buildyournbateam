@@ -1,17 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { DataGrid } from '@mui/x-data-grid';
+import Button from '@mui/material/Button';
 import { useLocation } from 'react-router-dom'
+import { TeamContext } from '../../App.jsx'
+
 import './data.css'
 
 const columns = [
   { field: 'player_id', headerName: 'ID', width: 20},
   { field: 'player_name', headerName: 'Name', width: 130 },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 60,
-  },
+  { field: 'age', headerName: 'Age', width: 60 },
+  { field: 'team', headerName: 'Team', width: 60 },
   { field: 'position', headerName: 'POS', width: 60},
   { field: 'games_played', headerName: 'GP', width: 60},
   { field: 'minutes_played', headerName: 'MIN', width: 60},
@@ -31,8 +30,30 @@ const columns = [
 
 function Data() {
   const [data, setData] = useState([])
+  const [selectedPlayer, setSelectedPlayer] = useState(null)
+  const {currentTeam, setCurrentTeam} = useContext(TeamContext)
   const location = useLocation()
   const { team, full_name, player_name, position } = location.state
+  function checkforDup(items) {
+    const set = new Set();
+    return items.filter((item) => {
+      const isDuplicate = set.has(item.id);
+      set.add(item.id);
+      return !isDuplicate;
+    });
+  }
+  const handleEvent = (e) => {
+    setSelectedPlayer(e)
+  };
+
+  const handleClick = (e) => {
+    if (selectedPlayer !== null) {
+      setCurrentTeam((currentTeam) => {
+        return checkforDup([...currentTeam, selectedPlayer])
+      })
+    }
+    
+  }
   useEffect( () => {
     console
     async function fetchData() {
@@ -50,6 +71,11 @@ function Data() {
     fetchData()
   }, [])
 
+  const columnVisibilityModel = {
+    // Hide columns status and traderName, the other columns will remain visible
+    player_id: false,
+  }
+
   
   return (
     <div className='data'>
@@ -61,13 +87,15 @@ function Data() {
         <DataGrid
           rows={data}
           columns={columns}
+          columnVisibilityModel={columnVisibilityModel}
           initialState={{
             pagination: {
               paginationModel: { page: 0, pageSize: 20 },
             },
           }}
-          pageSizeOptions={[10, 20]}
+          onRowClick={handleEvent}
         />
+        <Button variant="contained" onClick={handleClick}>Add Player to Team</Button>
       </div>
       
     </div>

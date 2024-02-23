@@ -14,10 +14,31 @@
 }
 
 .datagrid {
+    background-color: #387ADF;
     position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     height: 60vh;
-
+    width: unset;
+}
+.MuiDataGrid-columnHeadersInner{
+    background-color: #FBA834;
+}
+.MuiTablePagination-root{
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.MuiTablePagination-displayedRows{
+    position: absolute;
+    left: 20%;
+    width:unset;
+}
+.MuiTablePagination-actions{
+    position: absolute;
+    right:100px;
+    display:flex;
+    width:unset;
 }

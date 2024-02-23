@@ -1,0 +1,41 @@
+.home-title{
+    color: #fff;
+    
+}
+.home-top{
+    position: absolute;
+    display: flex;
+    text-align: center;
+    font-size: medium;
+    top: 10%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.home-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 60vh;
+    width: 100%;
+  }
+  
+
+.player-info{
+    color:#fff;
+}
+
+.player-card {
+    width: 20%; /* Each item takes up 25% of the container width */
+    padding: 10px;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 0px 0px 2px 0px;
+    border-color: white;
+    border-radius: 0.3rem;
+}
+
+.position-card:hover {
+background-color: #002b4e;
+}
